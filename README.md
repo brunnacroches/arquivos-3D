@@ -101,7 +101,9 @@ npm install @types/three --save-dev
 ```
 
 # 08
+##  Webpack Dev Server
 ### Configurando o Webpack Dev Server
+O Webpack Development Server possui vários recursos que tornam o desenvolvimento um processo mais fácil. Como o Hot Module Reloading (HMR), que atualizará automaticamente nosso navegador quando fizermos alterações em nosso código,
 Precisamos instalar vários módulos para que possamos usar o Webpack com eficácia.
 ```html 
 npm install webpack webpack-cli webpack-dev-server webpack-merge ts-loader --save-dev
@@ -112,7 +114,7 @@ npm install webpack webpack-cli webpack-dev-server webpack-merge ts-loader --sav
 ```html 
 npm install typescript --save-dev
 ```
-
+# 10
 #### Create ./src/client/webpack.common.js
 Agora vamos adicionar algumas configurações do Webpack ao nosso cliente.
 ```html 
@@ -138,7 +140,7 @@ module.exports = {
     },
 }
 ```
-
+# 11
 #### Create ./src/client/webpack.dev.js
 ```html 
 const { merge } = require('webpack-merge')
@@ -156,8 +158,32 @@ module.exports = merge(common, {
     },
 })
 ```
-
+# 12
 #### Add line 6 on ./package.json
 ```html 
         "dev": "webpack serve --config ./src/client/webpack.dev.js",
  ```
+
+# 13
+#### To install the Threejs type definitions
+
+```html 
+npm run dev
+```
+
+# 14
+#### Dat GUI
+Adicionando rapidamente uma interface de usuário muito básica que nos permite interagir com nossa cena 3D e os objetos dentro dela.
+##### Podemos instalar o Dat.GUI de seu repositório oficial.
+```html 
+npm install dat.gui --save-dev
+```
+##### Devemos também instalar as definições de tipo.
+
+npm install @types/dat.gui --save-dev
+
+
+#### Agora adicione a importação para ele em nosso client.tsscript existente
+```html 
+import { GUI } from 'dat.gui'
+```
