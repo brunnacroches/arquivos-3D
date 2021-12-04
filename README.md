@@ -1,19 +1,20 @@
 
 # How To Use
 
+# 01
 ### Initialize the New Project
 #### Open a command prompt and create a new folder on your system somewhere.
 
 ```html
     mkdir Three.js-TypeScript-Tutorial
 ```
-
+# 02
 #### CD into the new folder.
 
 ```html
    cd Three.js-TypeScript-Tutorial
 ```
-
+# 03
 #### Initialize a new project with NPM
 
 ```html
@@ -21,13 +22,14 @@
 ```
 Press enter several times to accept all defaults.
 
+# 04
 #### Install Three.js Library
 Install the Three.js library.
 
 ```html
     npm install three --save-dev
 ```
-
+# 05
 #### Create ./src/client/client.ts
 
 ```html
@@ -79,7 +81,7 @@ function render() {
 
 animate()
 ```
-
+# 06
 #### Create ./src/client/tsconfg.json
 
 ```html 
@@ -91,7 +93,7 @@ animate()
     "include": ["**/*.ts"]
 }
 ```
-
+# 07
 #### To install the Threejs type definitions
 
 ```html 
