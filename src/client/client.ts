@@ -6,10 +6,6 @@ import Stats from 'three/examples/jsm/libs/stats.module'
 const scene = new THREE.Scene()
 scene.add(new THREE.AxesHelper(5))
 
-// const light = new THREE.SpotLight();
-// light.position.set(5, 5, 5)
-// scene.add(light);
-
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -21,7 +17,7 @@ camera.position.z = 2
 const renderer = new THREE.WebGLRenderer()
 renderer.physicallyCorrectLights = true
 renderer.shadowMap.enabled = true
-// renderer.outputEncoding = THREE.sRGBEncoding
+renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
@@ -30,7 +26,7 @@ controls.enableDamping = true
 
 const loader = new GLTFLoader()
 loader.load(
-'models/monkey.glb',
+    'models/monkey_textured.glb',
     function (gltf) {
         gltf.scene.traverse(function (child) {
             if ((child as THREE.Mesh).isMesh) {
@@ -80,4 +76,5 @@ function animate() {
 function render() {
     renderer.render(scene, camera)
 }
+
 animate()
