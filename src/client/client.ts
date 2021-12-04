@@ -19,19 +19,19 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
 const menuPanel = document.getElementById('menuPanel') as HTMLDivElement
-// const startButton = document.getElementById('startButton') as HTMLInputElement
-// startButton.addEventListener(
-//     'click',
-//     function () {
-//         controls.lock()
-//     },
-//     false
-// )
+const startButton = document.getElementById('startButton') as HTMLInputElement
+startButton.addEventListener(
+    'click',
+    function () {
+        controls.lock()
+    },
+    false
+)
 
 const controls = new PointerLockControls(camera, renderer.domElement)
-// controls.addEventListener('change', () => console.log("Controls Change"))
-// controls.addEventListener('lock', () => menuPanel.style.display = 'none')
-// controls.addEventListener('unlock', () => menuPanel.style.display = 'block')
+//controls.addEventListener('change', () => console.log("Controls Change"))
+controls.addEventListener('lock', () => (menuPanel.style.display = 'none'))
+controls.addEventListener('unlock', () => (menuPanel.style.display = 'block'))
 
 const planeGeometry = new THREE.PlaneGeometry(100, 100, 50, 50)
 const material = new THREE.MeshBasicMaterial({
@@ -75,23 +75,23 @@ cubes.forEach((c) => {
     scene.add(c)
 })
 
-// const onKeyDown = function (event: KeyboardEvent) {
-//     switch (event.code) {
-//         case "KeyW":
-//             controls.moveForward(.25)
-//             break
-//         case "KeyA":
-//             controls.moveRight(-.25)
-//             break
-//         case "KeyS":
-//             controls.moveForward(-.25)
-//             break
-//         case "KeyD":
-//             controls.moveRight(.25)
-//             break
-//     }
-// }
-// document.addEventListener('keydown', onKeyDown, false)
+const onKeyDown = function (event: KeyboardEvent) {
+    switch (event.code) {
+        case 'KeyW':
+            controls.moveForward(0.25)
+            break
+        case 'KeyA':
+            controls.moveRight(-0.25)
+            break
+        case 'KeyS':
+            controls.moveForward(-0.25)
+            break
+        case 'KeyD':
+            controls.moveRight(0.25)
+            break
+    }
+}
+document.addEventListener('keydown', onKeyDown, false)
 
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
