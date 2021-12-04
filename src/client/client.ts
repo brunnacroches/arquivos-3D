@@ -29,12 +29,10 @@ const planeGeometry = new THREE.PlaneGeometry(3.6, 1.8)
 
 const material = new THREE.MeshPhongMaterial()
 
-const texture = new THREE.TextureLoader().load('img/worldColour.5400x2700.jpg')
+const texture = new THREE.TextureLoader().load('img/worldColour.2700x1350.jpg')
 material.map = texture
 
-const normalTexture = new THREE.TextureLoader().load(
-    'img/earth_normalmap_8192x4096.jpg'
-)
+const normalTexture = new THREE.TextureLoader().load('img/earth_normalmap_8192x4096.jpg')
 material.normalMap = normalTexture
 material.normalScale.set(2, 2)
 
