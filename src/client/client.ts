@@ -6,7 +6,7 @@ import { GUI } from 'dat.gui'
 const scene = new THREE.Scene()
 scene.add(new THREE.AxesHelper(5))
 
-const light = new THREE.SpotLight()
+const light = new THREE.DirectionalLight()
 light.castShadow = true
 light.shadow.mapSize.width = 512
 light.shadow.mapSize.height = 512
@@ -14,7 +14,7 @@ light.shadow.camera.near = 0.5
 light.shadow.camera.far = 100
 scene.add(light)
 
-//const helper = new THREE.SpotLightHelper(light)
+//const helper = new THREE.DirectionalLightHelper(light);
 const helper = new THREE.CameraHelper(light.shadow.camera)
 scene.add(helper)
 
@@ -49,7 +49,7 @@ const torusGeometry = [
     new THREE.TorusGeometry(),
     new THREE.TorusGeometry(),
     new THREE.TorusGeometry(),
-    new THREE.TorusGeometry(),
+    new THREE.TorusGeometry()
 ]
 
 const material = [
@@ -57,7 +57,7 @@ const material = [
     new THREE.MeshLambertMaterial(),
     new THREE.MeshPhongMaterial(),
     new THREE.MeshPhysicalMaterial({}),
-    new THREE.MeshToonMaterial(),
+    new THREE.MeshToonMaterial()
 ]
 
 const torus = [
@@ -65,7 +65,7 @@ const torus = [
     new THREE.Mesh(torusGeometry[1], material[1]),
     new THREE.Mesh(torusGeometry[2], material[2]),
     new THREE.Mesh(torusGeometry[3], material[3]),
-    new THREE.Mesh(torusGeometry[4], material[4]),
+    new THREE.Mesh(torusGeometry[4], material[4])
 ]
 
 const texture = new THREE.TextureLoader().load('img/grid.png')
@@ -114,7 +114,7 @@ const data = {
     color: light.color.getHex(),
     mapsEnabled: true,
     shadowMapSizeWidth: 512,
-    shadowMapSizeHeight: 512,
+    shadowMapSizeHeight: 512
 }
 
 const gui = new GUI()
@@ -124,27 +124,35 @@ lightFolder.addColor(data, 'color').onChange(() => {
 })
 lightFolder.add(light, 'intensity', 0, 1, 0.01)
 
-const spotLightFolder = gui.addFolder('THREE.SpotLight')
-spotLightFolder.add(light, 'distance', 0, 100, 0.01)
-spotLightFolder.add(light, 'decay', 0, 4, 0.1)
-spotLightFolder.add(light, 'angle', 0, 1, 0.1)
-spotLightFolder.add(light, 'penumbra', 0, 1, 0.1)
-spotLightFolder
+const directionalLightFolder = gui.addFolder('THREE.DirectionalLight')
+directionalLightFolder
+    .add(light.shadow.camera, 'left', -10, -1, 0.1)
+    .onChange(() => light.shadow.camera.updateProjectionMatrix())
+directionalLightFolder
+    .add(light.shadow.camera, 'right', 1, 10, 0.1)
+    .onChange(() => light.shadow.camera.updateProjectionMatrix())
+directionalLightFolder
+    .add(light.shadow.camera, 'top', 1, 10, 0.1)
+    .onChange(() => light.shadow.camera.updateProjectionMatrix())
+directionalLightFolder
+    .add(light.shadow.camera, 'bottom', -10, -1, 0.1)
+    .onChange(() => light.shadow.camera.updateProjectionMatrix())
+directionalLightFolder
     .add(light.shadow.camera, 'near', 0.1, 100)
     .onChange(() => light.shadow.camera.updateProjectionMatrix())
-spotLightFolder
+directionalLightFolder
     .add(light.shadow.camera, 'far', 0.1, 100)
     .onChange(() => light.shadow.camera.updateProjectionMatrix())
-spotLightFolder
+directionalLightFolder
     .add(data, 'shadowMapSizeWidth', [256, 512, 1024, 2048, 4096])
     .onChange(() => updateShadowMapSize())
-spotLightFolder
+directionalLightFolder
     .add(data, 'shadowMapSizeHeight', [256, 512, 1024, 2048, 4096])
     .onChange(() => updateShadowMapSize())
-spotLightFolder.add(light.position, 'x', -50, 50, 0.01)
-spotLightFolder.add(light.position, 'y', -50, 50, 0.01)
-spotLightFolder.add(light.position, 'z', -50, 50, 0.01)
-spotLightFolder.open()
+directionalLightFolder.add(light.position, 'x', -50, 50, 0.01)
+directionalLightFolder.add(light.position, 'y', -50, 50, 0.01)
+directionalLightFolder.add(light.position, 'z', -50, 50, 0.01)
+directionalLightFolder.open()
 
 function updateShadowMapSize() {
     light.shadow.mapSize.width = data.shadowMapSizeWidth
