@@ -28,7 +28,7 @@ controls.enableDamping = true
 // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true })
 
 const objLoader = new OBJLoader()
-objLoader.load('models/monkey.obj',
+objLoader.load('models/avatar.obj',
     (object) => {
         // (object.children[0] as THREE.Mesh).material = material
         // object.traverse(function (child) {
