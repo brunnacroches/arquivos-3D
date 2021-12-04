@@ -137,16 +137,22 @@ function updateMaterial() {
     material.needsUpdate = true
 }
 
-function animate() {
-    requestAnimationFrame(animate)
-
-    render()
-
-    stats.update()
-}
-
+var animate = function () {
+  requestAnimationFrame(animate);
+  icosahedron.rotation.y += .005
+  icosahedron.rotation.x += .005
+  cube.rotation.y += .005
+  cube.rotation.x += .005
+  torusKnot.rotation.y += .005
+  torusKnot.rotation.x += .005
+  sphere.rotation.y += .005
+  sphere.rotation.x += .005
+  plane.rotation.y += .005
+  plane.rotation.x += .005
+  render();
+  stats.update();
+};
 function render() {
-    renderer.render(scene, camera)
+  renderer.render(scene, camera);
 }
-
-animate()
+animate();
