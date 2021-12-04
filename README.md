@@ -99,3 +99,65 @@ animate()
 ```html 
 npm install @types/three --save-dev
 ```
+
+# 08
+### Configurando o Webpack Dev Server
+Precisamos instalar vários módulos para que possamos usar o Webpack com eficácia.
+```html 
+npm install webpack webpack-cli webpack-dev-server webpack-merge ts-loader --save-dev
+```
+
+# 09
+### Também precisaremos de uma cópia local do TypeScript na node_modulespasta para uso pelots-loader
+```html 
+npm install typescript --save-dev
+```
+
+#### Create ./src/client/webpack.common.js
+Agora vamos adicionar algumas configurações do Webpack ao nosso cliente.
+```html 
+const path = require('path')
+
+module.exports = {
+    entry: './src/client/client.ts',
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, '../../dist/client'),
+    },
+}
+```
+
+#### Create ./src/client/webpack.dev.js
+```html 
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common.js')
+const path = require('path');
+
+module.exports = merge(common, {
+    mode: 'development',
+    devtool: 'eval-source-map',
+    devServer: {
+        static: {
+            directory: path.join(__dirname, '../../dist/client'),
+        },
+        hot: true,
+    },
+})
+```
+
+#### Add line 6 on ./package.json
+```html 
+        "dev": "webpack serve --config ./src/client/webpack.dev.js",
+ ```
