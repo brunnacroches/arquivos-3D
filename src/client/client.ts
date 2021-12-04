@@ -121,7 +121,7 @@ function updateMaterial() {
 }
 
 const planeData = {
-    width: 3.6,
+    width: 3.7,
     height: 1.8,
     widthSegments: 360,
     heightSegments: 180,
