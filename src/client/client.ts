@@ -139,7 +139,7 @@ function updateMaterial() {
 
 var animate = function () {
   requestAnimationFrame(animate);
-  icosahedron.rotation.y += .005
+  icosahedron.rotation.y += .006
   icosahedron.rotation.x += .005
   cube.rotation.y += .005
   cube.rotation.x += .005
