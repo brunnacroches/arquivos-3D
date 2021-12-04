@@ -29,18 +29,14 @@ const planeGeometry = new THREE.PlaneGeometry(3.6, 1.8, 360, 180)
 
 const material = new THREE.MeshPhongMaterial()
 
-const texture = new THREE.TextureLoader().load('img/worldColour.2700x1350.jpg')
+const texture = new THREE.TextureLoader().load('img/worldColour.5400x2700.jpg')
 material.map = texture
 
-const displacementMap = new THREE.TextureLoader().load(
-    'img/gebco-bathy.5400x2700-8bit.jpg'
-)
+const displacementMap = new THREE.TextureLoader().load('img/gebco-bathy.5400x2700-8bit.jpg')
 material.displacementMap = displacementMap
 material.displacementScale = 0.3
 
-const normalTexture = new THREE.TextureLoader().load(
-    'img/earth_normalmap_8192x4096.jpg'
-)
+const normalTexture = new THREE.TextureLoader().load('img/earth_normalmap_8192x4096.jpg')
 material.normalMap = normalTexture
 material.normalScale.set(5, 5)
 
