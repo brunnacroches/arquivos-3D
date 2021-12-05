@@ -1,10 +1,17 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import Stats from 'three/examples/jsm/libs/stats.module'
 
 const scene = new THREE.Scene()
 scene.add(new THREE.AxesHelper(5))
+
+const light = new THREE.PointLight()
+light.position.set(0.8, 1.4, 1.0)
+scene.add(light)
+
+const ambientLight = new THREE.AmbientLight()
+scene.add(ambientLight)
 
 const camera = new THREE.PerspectiveCamera(
     75,
@@ -12,36 +19,31 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 )
-camera.position.z = 2
+camera.position.set(0.8, 1.4, 1.0)
 
 const renderer = new THREE.WebGLRenderer()
-renderer.physicallyCorrectLights = true
-renderer.shadowMap.enabled = true
-renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
+controls.target.set(0, 1, 0)
 
-const loader = new GLTFLoader()
-loader.load('models/monkey_textured.glb',
-    function (gltf) {
-        gltf.scene.traverse(function (child) {
-            if ((child as THREE.Mesh).isMesh) {
-                const m = child as THREE.Mesh
-                m.receiveShadow = true
-                m.castShadow = true
-            }
-            if ((child as THREE.Light).isLight) {
-                const l = child as THREE.Light
-                l.castShadow = true
-                l.shadow.bias = -0.003
-                l.shadow.mapSize.width = 2048
-                l.shadow.mapSize.height = 2048
-            }
-        })
-        scene.add(gltf.scene)
+//const material = new THREE.MeshNormalMaterial()
+
+const fbxLoader = new FBXLoader()
+fbxLoader.load('models/t-pose.fbx',
+    (object) => {
+        // object.traverse(function (child) {
+        //     if ((child as THREE.Mesh).isMesh) {
+        //         // (child as THREE.Mesh).material = material
+        //         if ((child as THREE.Mesh).material) {
+        //             ((child as THREE.Mesh).material as THREE.MeshBasicMaterial).transparent = false
+        //         }
+        //     }
+        // })
+        // object.scale.set(.01, .01, .01)
+        scene.add(object)
     },
     (xhr) => {
         console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
