@@ -4,11 +4,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Stats from 'three/examples/jsm/libs/stats.module'
 
 const scene = new THREE.Scene()
-scene.add(new THREE.AxesHelper(3))
+scene.add(new THREE.AxesHelper(5))
 
-const light = new THREE.SpotLight();
+const light = new THREE.SpotLight()
 light.position.set(5, 5, 5)
-scene.add(light);
+scene.add(light)
 
 const camera = new THREE.PerspectiveCamera(
     75,
@@ -16,7 +16,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 )
-camera.position.z = 5
+camera.position.z = 6
 
 const renderer = new THREE.WebGLRenderer()
 renderer.physicallyCorrectLights = true
@@ -34,14 +34,14 @@ loader.load(
     function (gltf) {
         gltf.scene.traverse(function (child) {
             if ((child as THREE.Mesh).isMesh) {
-                const m = child as THREE.Mesh
+                const m = (child as THREE.Mesh)
                 m.receiveShadow = true
                 m.castShadow = true
             }
-            if ((child as THREE.Light).isLight) {
-                const l = child as THREE.Light
+            if (((child as THREE.Light)).isLight) {
+                const l = (child as THREE.Light)
                 l.castShadow = true
-                l.shadow.bias = -0.003
+                l.shadow.bias = -.003
                 l.shadow.mapSize.width = 2048
                 l.shadow.mapSize.height = 2048
             }
