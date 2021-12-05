@@ -4,19 +4,19 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Stats from 'three/examples/jsm/libs/stats.module'
 
 const scene = new THREE.Scene()
-scene.add(new THREE.AxesHelper(10))
+scene.add(new THREE.AxesHelper(3))
 
 const light = new THREE.SpotLight();
-light.position.set(3, 3, 4)
+light.position.set(5, 5, 5)
 scene.add(light);
 
 const camera = new THREE.PerspectiveCamera(
-    100,
+    75,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 )
-camera.position.z = 4
+camera.position.z = 5
 
 const renderer = new THREE.WebGLRenderer()
 renderer.physicallyCorrectLights = true
@@ -30,7 +30,7 @@ controls.enableDamping = true
 
 const loader = new GLTFLoader()
 loader.load(
-'models/avatar.glb',
+    'models/my-avatar.glb',
     function (gltf) {
         gltf.scene.traverse(function (child) {
             if ((child as THREE.Mesh).isMesh) {
@@ -80,4 +80,5 @@ function animate() {
 function render() {
     renderer.render(scene, camera)
 }
+
 animate()
