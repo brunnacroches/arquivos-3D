@@ -49,70 +49,69 @@ gltfLoader.load('models/vanguard.glb',
         animationsFolder.add(animations, 'default')
         activeAction = animationActions[0]
 
-
         scene.add(gltf.scene)
 
-        // //add an animation from another file
-        // gltfLoader.load(
-        //     'models/vanguard@samba.glb',
-        //     (gltf) => {
-        //         console.log('loaded samba')
-        //         const animationAction = mixer.clipAction(
-        //             (gltf as any).animations[0]
-        //         )
-        //         animationActions.push(animationAction)
-        //         animationsFolder.add(animations, 'samba')
+        //add an animation from another file
+        gltfLoader.load(
+            'models/vanguard@samba.glb',
+            (gltf) => {
+                console.log('loaded samba')
+                const animationAction = mixer.clipAction(
+                    (gltf as any).animations[0]
+                )
+                animationActions.push(animationAction)
+                animationsFolder.add(animations, 'samba')
 
-        //         //add an animation from another file
-        //         gltfLoader.load(
-        //             'models/vanguard@bellydance.glb',
-        //             (gltf) => {
-        //                 console.log('loaded bellydance')
-        //                 const animationAction = mixer.clipAction(
-        //                     (gltf as any).animations[0]
-        //                 )
-        //                 animationActions.push(animationAction)
-        //                 animationsFolder.add(animations, 'bellydance')
+                //add an animation from another file
+                gltfLoader.load(
+                    'models/vanguard@bellydance.glb',
+                    (gltf) => {
+                        console.log('loaded bellydance')
+                        const animationAction = mixer.clipAction(
+                            (gltf as any).animations[0]
+                        )
+                        animationActions.push(animationAction)
+                        animationsFolder.add(animations, 'bellydance')
 
-        //                 //add an animation from another file
-        //                 gltfLoader.load(
-        //                     'models/vanguard@goofyrunning.glb',
-        //                     (gltf) => {
-        //                         console.log('loaded goofyrunning');
-        //                         (gltf as any).animations[0].tracks.shift() //delete the specific track that moves the object forward while running
-        //                         const animationAction = mixer.clipAction(
-        //                             (gltf as any).animations[0]
-        //                         )
-        //                         animationActions.push(animationAction)
-        //                         animationsFolder.add(animations, 'goofyrunning')
+                        //add an animation from another file
+                        gltfLoader.load(
+                            'models/vanguard@goofyrunning.glb',
+                            (gltf) => {
+                                console.log('loaded goofyrunning');
+                                (gltf as any).animations[0].tracks.shift() //delete the specific track that moves the object forward while running
+                                const animationAction = mixer.clipAction(
+                                    (gltf as any).animations[0]
+                                )
+                                animationActions.push(animationAction)
+                                animationsFolder.add(animations, 'goofyrunning')
 
-        //                         modelReady = true
-        //                     },
-        //                     (xhr) => {
-        //                         console.log(
-        //                             (xhr.loaded / xhr.total) * 100 + '% loaded'
-        //                         )
-        //                     },
-        //                     (error) => {
-        //                         console.log(error)
-        //                     }
-        //                 )
-        //             },
-        //             (xhr) => {
-        //                 console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-        //             },
-        //             (error) => {
-        //                 console.log(error)
-        //             }
-        //         )
-        //     },
-        //     (xhr) => {
-        //         console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-        //     },
-        //     (error) => {
-        //         console.log(error)
-        //     }
-        // )
+                                modelReady = true
+                            },
+                            (xhr) => {
+                                console.log(
+                                    (xhr.loaded / xhr.total) * 100 + '% loaded'
+                                )
+                            },
+                            (error) => {
+                                console.log(error)
+                            }
+                        )
+                    },
+                    (xhr) => {
+                        console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                    },
+                    (error) => {
+                        console.log(error)
+                    }
+                )
+            },
+            (xhr) => {
+                console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+            },
+            (error) => {
+                console.log(error)
+            }
+        )
     },
     (xhr) => {
         console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
