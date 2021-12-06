@@ -40,14 +40,12 @@ fbxLoader.load('models/vanguard_t_choonyung.fbx',
         mixer = new THREE.AnimationMixer(object)
 
         const animationAction = mixer.clipAction(
-            (object as THREE.Object3D).animations[0]
-        )
+            (object as THREE.Object3D).animations[0])
         animationActions.push(animationAction)
         animationsFolder.add(animations, 'default')
         activeAction = animationActions[0]
 
         scene.add(object)
-
         // add an animation from another file
         fbxLoader.load('models/vanguard@samba.fbx',
             (object) => {
@@ -65,15 +63,16 @@ fbxLoader.load('models/vanguard_t_choonyung.fbx',
                         animationActions.push(animationAction)
                         animationsFolder.add(animations, "bellydance")
 
-                        // add an animation from another file
-                        fbxLoader.load('models/vanguard@goofyrunning.fbx',
-                            (object) => {
-                                console.log("loaded goofyrunning");
-                                (object as THREE.Object3D).animations[0].tracks.shift() //delete the specific track that moves the object forward while running
-                                //console.dir((object as THREE.Object3D).animations[0])
-                                const animationAction = mixer.clipAction((object as THREE.Object3D).animations[0]);
-                                animationActions.push(animationAction)
-                                animationsFolder.add(animations, "goofyrunning")
+                                   // add an animation from another file
+                                   fbxLoader.load('models/vanguard@goofyrunning.fbx',
+                                   (object) => {
+                                       console.log("loaded goofyrunning");
+                                       (object as THREE.Object3D).animations[0].tracks.shift() 
+                                       //delete the specific track that moves the object forward while running
+                                       //console.dir((object as THREE.Object3D).animations[0])
+                                       const animationAction = mixer.clipAction((object as THREE.Object3D).animations[0]);
+                                       animationActions.push(animationAction)
+                                       animationsFolder.add(animations, "goofyrunning")
 
                                 modelReady = true
                             },
@@ -139,10 +138,10 @@ const setAction = (toAction: THREE.AnimationAction) => {
     if (toAction != activeAction) {
         lastAction = activeAction
         activeAction = toAction
-        lastAction.stop()
-        //lastAction.fadeOut(1)
+        // lastAction.stop()
+        lastAction.fadeOut(1)
         activeAction.reset()
-        //activeAction.fadeIn(1)
+        activeAction.fadeIn(1)
         activeAction.play()
     }
 }
