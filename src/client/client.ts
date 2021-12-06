@@ -38,8 +38,7 @@ let activeAction: THREE.AnimationAction
 let lastAction: THREE.AnimationAction
 const gltfLoader = new GLTFLoader()
 
-gltfLoader.load(
-    'models/vanguard.glb',
+gltfLoader.load('models/vanguard.glb',
     (gltf) => {
         // gltf.scene.scale.set(.01, .01, .01)
 
