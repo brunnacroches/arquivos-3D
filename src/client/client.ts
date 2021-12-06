@@ -29,20 +29,20 @@ const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 controls.target.set(0, 1, 0)
 
-//const material = new THREE.MeshNormalMaterial()
+const material = new THREE.MeshNormalMaterial()
 
 const fbxLoader = new FBXLoader()
-fbxLoader.load('models/t-pose.fbx',
+fbxLoader.load('models/pose-body-avatar.fbx',
     (object) => {
-        // object.traverse(function (child) {
-        //     if ((child as THREE.Mesh).isMesh) {
-        //         // (child as THREE.Mesh).material = material
-        //         if ((child as THREE.Mesh).material) {
-        //             ((child as THREE.Mesh).material as THREE.MeshBasicMaterial).transparent = false
-        //         }
-        //     }
-        // })
-        // object.scale.set(.01, .01, .01)
+        object.traverse(function (child) {
+            if ((child as THREE.Mesh).isMesh) {
+                // (child as THREE.Mesh).material = material
+                if ((child as THREE.Mesh).material) {
+                    ((child as THREE.Mesh).material as THREE.MeshBasicMaterial).transparent = false
+                }
+            }
+        })
+        object.scale.set(.01, .01, .01)
         scene.add(object)
     },
     (xhr) => {
