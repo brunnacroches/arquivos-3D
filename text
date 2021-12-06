@@ -1,0 +1,13 @@
+# Animation Mixamo para GLTF
+
+1- Converter FBX para GLTF pelo Blender
+2- No blender com o projeto aberto GLTF vá em :
+    - File
+    - New
+    - General 
+    - Don't save
+    - Import
+    - FBX
+    - models folders 
+    - 01- import samba
+     
