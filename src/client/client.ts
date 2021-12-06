@@ -29,7 +29,7 @@ const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 controls.target.set(0, 1, 0)
 
-const material = new THREE.MeshNormalMaterial()
+//const material = new THREE.MeshNormalMaterial()
 
 const fbxLoader = new FBXLoader()
 fbxLoader.load('models/pose-body-avatar.fbx',
