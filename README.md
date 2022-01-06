@@ -112,7 +112,6 @@ npm install webpack webpack-cli webpack-dev-server webpack-merge ts-loader --sav
 # 09
 ### Também precisaremos de uma cópia local do TypeScript na node_modulespasta para uso pelots-loader
 ```html 
-npm install typescript --save-dev
 ```
 # 10
 #### Create ./src/client/webpack.common.js

@@ -44,27 +44,12 @@ gltfLoader.load('models/vanguard.glb',
 
         mixer = new THREE.AnimationMixer(gltf.scene)
 
-<<<<<<< HEAD
         const animationAction = mixer.clipAction((gltf as any).animations[0])
-=======
-        const animationAction = mixer.clipAction(
-            (object as THREE.Object3D).animations[0]
-        )
->>>>>>> parent of 11debe1 (update)
         animationActions.push(animationAction)
         animationsFolder.add(animations, 'default')
         activeAction = animationActions[0]
 
-<<<<<<< HEAD
         scene.add(gltf.scene)
-=======
-        scene.add(object)
-
-        // add an animation from another file
-        fbxLoader.load('models/vanguard@samba.fbx',
-            (object) => {
-                console.log("loaded samba")
->>>>>>> parent of 11debe1 (update)
 
         //add an animation from another file
         gltfLoader.load(
@@ -86,7 +71,6 @@ gltfLoader.load('models/vanguard.glb',
                             (gltf as any).animations[0]
                         )
                         animationActions.push(animationAction)
-<<<<<<< HEAD
                         animationsFolder.add(animations, 'bellydance')
 
                         //add an animation from another file
@@ -100,19 +84,6 @@ gltfLoader.load('models/vanguard.glb',
                                 )
                                 animationActions.push(animationAction)
                                 animationsFolder.add(animations, 'goofyrunning')
-=======
-                        animationsFolder.add(animations, "bellydance")
-
-                        // add an animation from another file
-                        fbxLoader.load('models/vanguard@goofyrunning.fbx',
-                            (object) => {
-                                console.log("loaded goofyrunning");
-                                (object as THREE.Object3D).animations[0].tracks.shift() //delete the specific track that moves the object forward while running
-                                //console.dir((object as THREE.Object3D).animations[0])
-                                const animationAction = mixer.clipAction((object as THREE.Object3D).animations[0]);
-                                animationActions.push(animationAction)
-                                animationsFolder.add(animations, "goofyrunning")
->>>>>>> parent of 11debe1 (update)
 
                                 modelReady = true
                             },
@@ -180,13 +151,8 @@ const setAction = (toAction: THREE.AnimationAction) => {
     if (toAction != activeAction) {
         lastAction = activeAction
         activeAction = toAction
-<<<<<<< HEAD
         //lastAction.stop()
         lastAction.fadeOut(1)
-=======
-        lastAction.stop()
-        //lastAction.fadeOut(1)
->>>>>>> parent of 11debe1 (update)
         activeAction.reset()
         //activeAction.fadeIn(1)
         activeAction.play()
