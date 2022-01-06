@@ -4,6 +4,7 @@
   "description": "# 01 ### Initialize the New Project #### Open a command prompt and create a new folder on your system somewhere.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js --open",
     "dev": "webpack serve --config ./src/client/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,9 @@
     "url": "https://github.com/brunnacroches/Three.js-TypeScript-Tutorial01/issues"
   },
   "homepage": "https://github.com/brunnacroches/Three.js-TypeScript-Tutorial01#readme",
-  "devDependencies": {
+
+  "dependencies": {
+    "express": "^4.17.2",
     "@types/dat.gui": "^0.7.7",
     "@types/three": "^0.136.1",
     "dat.gui": "^0.7.7",
