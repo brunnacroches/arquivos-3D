@@ -1,11 +1,11 @@
 import express from 'express'
 import path from 'path'
-import http from 'http'
+import https from 'https'
 
-const port: number = 3000
+const port: number = 5000
 
 class App {
-    private server: http.Server
+    private server: https.Server
     private port: number
 
     constructor(port: number) {
@@ -20,9 +20,9 @@ class App {
         // # tsc -p ./src/server  (this compiles ./src/server/server.ts into ./dist/server/server.js)
         // # npm start            (this starts node.js with express and serves the ./dist/client folder)
         //
-        // visit http://127.0.0.1:3000
+        // visit https://127.0.0.1:3000
 
-        this.server = new http.Server(app)
+        this.server = new https.Server(app)
     }
 
     public Start() {
