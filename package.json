@@ -8,8 +8,9 @@
   "scripts": {
     "build": "webpack --config ./src/client/webpack.prod.js",
     "start": "npx node ./dist/server/server.js",
-    "dev": "webpack serve --config ./src/client/webpack.dev.js"
-    },
+    "dev": "webpack serve --config ./src/client/webpack.dev.js",
+    "deploy": "gh-pages -d ./dist/client"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brunnacroches/Three.js-TypeScript-Tutorial01.git"
@@ -27,6 +28,7 @@
     "dat.gui": "^0.7.7",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
+    "https-server": "^0.1.2",
     "pg": "^8.7.1",
     "three": "^0.136.0",
     "ts-loader": "^9.2.6",
@@ -35,5 +37,8 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2",
     "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
