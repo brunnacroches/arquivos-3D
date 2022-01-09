@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const http_1 = __importDefault(require("http"));
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 class App {
     constructor(port) {
-        this.port = port;
+        this.PORT = PORT;
         const app = (0, express_1.default)();
         app.use(express_1.default.static(path_1.default.join(__dirname, '../client')));
         // This server.ts is only useful if you are running this on a production server or you
