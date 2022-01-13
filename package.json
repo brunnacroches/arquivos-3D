@@ -6,6 +6,7 @@
     "node": "17.3.0"
   },
   "scripts": {
+    "compile": "tsc",
     "build": "webpack --config ./src/client/webpack.prod.js",
     "start": "node ./dist/server/server.js",
     "dev": "webpack serve --config ./src/client/webpack.dev.js",
