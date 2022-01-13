@@ -13,4 +13,5 @@
       "declaration": true,
   },
   "include": ["**/*.ts"],
+  "allowSyntheticDefaultImports": true,
 }
