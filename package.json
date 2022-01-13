@@ -8,7 +8,7 @@
   "scripts": {
     "compile": "tsc",
     "build": "webpack --config ./src/client/webpack.prod.js",
-    "start": "node ./dist/server/server.js",
+    "start": "node --max-old-space-size=4096 ./dist/server/server.js",
     "dev": "webpack serve --config ./src/client/webpack.dev.js",
     "deploy": "gh-pages -d ./dist/client"
   },

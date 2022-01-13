@@ -6,19 +6,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const http_1 = __importDefault(require("http"));
-const port = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 class App {
-    constructor(port) {
-        this.port = port;
+    constructor(PORT) {
+        this.PORT = PORT;
         const app = (0, express_1.default)();
         app.use(express_1.default.static(path_1.default.join(__dirname,'../client')));
         this.server = new http_1.default.Server(app);
     }
     Start() {
-        this.server.listen(this.port, () => {
-            console.log('Server listening on port ${this.port}.');
+        this.server.listen(this.PORT, () => {
+            console.log('Server listening on PORT ${this.PORT}.');
         });
     }
 }
 
-new App(port).Start();
+new App(PORT).Start();
