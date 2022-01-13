@@ -1,30 +1,24 @@
-import http from 'http';
-var port = process.env.PORT || 8000;
-const CORS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, x-test'
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const server = http.createServer(async(req,res)=>{
-    if(req.url === '/result4/'){
-
-        res.writeHead(200, {
-            'Content-Type':'application/json',
-            ...CORS,
-        })
-        let data = '';
-        await req.on('data', function (chunk){
-            data += chunk;
-        }).on('end', () =>{
-      })
-      res.write(JSON.stringify({
-          "message":"itmo308555",
-          "x-result":"baovn",
-          "x-body":"abc"
-      }
-      ))
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+const http_1 = __importDefault(require("http"));
+const port = process.env.port || 5000;
+class App {
+    constructor(port) {
+        this.port = port;
+        const app = (0, express_1.default)();
+        app.use(express_1.default.static(path_1.default.join(__dirname,'../client')));
+        this.server = new http_1.default.Server(app);
     }
-    res.end()
-});
-server.listen(port,() =>{
-    console.log('Server is running')});
+    Start() {
+        this.server.listen(this.port, () => {
+            console.log('Server listening on port ${this.port}.');
+        });
+    }
+}
+
+new App(port).Start();
