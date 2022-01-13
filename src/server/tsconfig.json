@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+      "target": "ES2019",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "noImplicitAny": false,
+      "outDir": "../../dist/server",
+      "rootDir": "../../src",
+      "allowSyntheticDefaultImports": true,
+      "pretty": true,
+      "removeComments": true,
+      "declaration": true,
+  },
+  "include": ["**/*.ts"],
+  "allowSyntheticDefaultImports": true,
+}
